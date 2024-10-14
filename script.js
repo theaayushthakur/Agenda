@@ -1,6 +1,6 @@
-const API_KEY = "b349b6927a4440e7bc71902499d4d1ab";
+const API_KEY = "eae34cbe857c4db094583769cce916fc";
+const corsProxy = "https://cors-anywhere.herokuapp.com/"; // CORS Proxy
 const url = "https://newsapi.org/v2/everything?q=";
-
 
 window.addEventListener("load", () => fetchNews("India"));
 
@@ -9,14 +9,20 @@ function reload() {
 }
 
 async function fetchNews(query) {
-    if (query === "celebrity") {
-        const res = await fetch(`${url}category=celebrity&apiKey=${API_KEY}`);
+    try {
+        // Use CORS proxy in the API request URL
+        const apiUrl = `${corsProxy}${url}${query}&apiKey=${API_KEY}`;
+        const res = await fetch(apiUrl);
+
+        if (!res.ok) {
+            throw new Error(`HTTP error! Status: ${res.status}`);
+        }
+
         const data = await res.json();
         bindData(data.articles);
-    } else {
-        const res = await fetch(`${url}${query}&apiKey=${API_KEY}`);
-        const data = await res.json();
-        bindData(data.articles);
+    } catch (error) {
+        console.error("Error fetching news:", error);
+        alert("Failed to fetch news. Check the console for more details.");
     }
 }
 
@@ -32,10 +38,6 @@ function bindData(articles) {
         fillDataInCard(cardClone, article);
         cardsContainer.appendChild(cardClone);
     });
-}
-
-function scrollToFooter() {
-    document.getElementById("footer").scrollIntoView({ behavior: "smooth" });
 }
 
 function fillDataInCard(cardClone, article) {
