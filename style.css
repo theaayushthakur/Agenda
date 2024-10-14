@@ -1,0 +1,448 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto:wght@500&display=swap");
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-text-color: #183b56;
+    --secondary-text-color: #577592;
+    --accent-color: #2294ed;
+    --accent-color-dark: #1d69a3;
+    --light-bg: #f9f9f9;
+    --card-bg: #ffffff;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    color: var(--primary-text-color);
+    background-color: var(--light-bg);
+    line-height: 1.6; /* Improved line height for better readability */
+}
+
+p {
+    font-family: "Roboto", sans-serif;
+    color: var(--secondary-text-color);
+}
+
+a {
+    text-decoration: none;
+    transition: color 0.3s ease; /* Smooth transition for link colors */
+}
+
+ul {
+    list-style: none;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+}
+
+.container {
+    max-width: 1180px;
+    margin-inline: auto;
+    overflow: hidden;
+    padding: 0 20px; /* Added padding for better spacing */
+}
+
+nav {
+    background-color: #f3faff;
+    box-shadow: 0 2px 4px var(--shadow-color);
+    position: fixed;
+    top: 0;
+    z-index: 99;
+    left: 0;
+    right: 0;
+}
+
+
+/* Main Navigation Styles */
+.main-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #333;
+    padding: 10px 20px;
+    position: relative;
+}
+
+/* Hamburger Icon Styles */
+.hamburger {
+    display: flex; /* Always show hamburger icon */
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger .bar {
+    height: 4px;
+    width: 25px;
+    background-color: #fff;
+    margin: 4px 0;
+    transition: 0.3s;
+}
+
+/* Navigation Links (hidden by default) */
+.nav-links {
+    position: fixed;
+    top: 0;
+    left: -100%; /* Initially off-screen */
+    width: 100%;
+    height: 100%;
+    background-color: #444;
+    transition: left 0.3s ease;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+/* Show navigation when active */
+.nav-links.active {
+    left: 0;
+}
+
+/* Close Button */
+.close-button {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+    align-self: flex-end;
+    margin-bottom: 20px;
+}
+
+/* Navigation Links Styles */
+.nav-links ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0;
+}
+
+.nav-links ul li {
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 10px 0;
+    text-align: left;
+}
+
+/* Search Bar */
+.search-bar {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.search-bar input {
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 20px;
+    margin-right: 10px;
+    width: calc(25% - 120px);
+}
+
+.search-bar button {
+    padding: 10px 15px;
+    background-color: #0000ff;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.search-bar button:hover {
+    background-color: #0013e5;
+}
+
+/* Make hamburger and menu work on all screens */
+@media (min-width: 769px) {
+    .hamburger {
+        display: flex; /* Still show hamburger on larger screens */
+    }
+}
+
+
+
+main {
+    padding-block: 20px;
+    margin-top: 80px;
+}
+
+.cards-container {
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 20px;
+    align-items: start;
+}
+
+.card {
+    width: 360px;
+    min-height: 400px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    border-radius: 12px; /* Rounded corners */
+    cursor: pointer;
+    background-color: var(--card-bg);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px var(--shadow-color);
+    background-color: #f9fdff;
+    transform: translateY(-4px); /* Lift effect on hover */
+}
+
+.card-header img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-top-left-radius: 12px; /* Match the card's border radius */
+    border-top-right-radius: 12px; /* Match the card's border radius */
+}
+
+.card-content {
+    padding: 16px; /* Increased padding for better spacing */
+}
+
+.news-source {
+    margin-block: 12px;
+}
+
+/* Card Styles */
+.card {
+    width: 360px;
+    min-height: 400px;
+    box-shadow: 0 2px 10px var(--shadow-color);
+    border-radius: 12px; /* Rounded corners */
+    cursor: pointer;
+    background-color: var(--card-bg);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 4px 15px rgba(34, 148, 237, 0.3); /* Enhanced shadow on hover */
+    background-color: #f9fdff;
+    transform: translateY(-4px); /* Slightly increased movement on hover */
+}
+
+/* Card Header Image */
+.card-header img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-top-left-radius: 12px; /* Rounded corners for the top */
+    border-top-right-radius: 12px; /* Rounded corners for the top */
+}
+
+/* Footer Styling */
+.footer {
+    background-color:#08A045;
+    color: #fff;
+    padding: 50px 0;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+
+.footer .box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+.footer .box {
+    margin: 20px 0;
+}
+
+.footer .box h3 {
+    color: #ffffff;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.footer .box a {
+    display: block;
+    color: #000000;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer .box a:hover {
+    color: #0000ff;
+}
+
+.footer .box a i {
+    margin-right: 8px;
+}
+
+/* Footer Button Styling */
+.footer-button {
+    background-color: #0000ff;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 30px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.footer-button:hover {
+    background-color: #000000;
+}
+
+.footer .credit {
+    margin-top: 30px;
+    color: #ccc;
+    font-size: 0.85rem;
+    font-weight: 300;
+}
+
+.footer .credit span {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .footer .box-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Contact Us Section Styling */
+.contact {
+    background-color: #f9f9f9;
+    padding: 50px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.contact .wrapper1 {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 4px 12px var(--shadow-color);
+    max-width: 600px;
+    width: 100%;
+}
+
+.contact .title1 h1 {
+    font-size: 28px;
+    color: var(--primary-text-color);
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: "Poppins", sans-serif;
+}
+
+.contact .input-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact .input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #bbd0e2;
+    border-radius: 8px; /* Rounded corners */
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    transition: border 0.3s ease;
+}
+
+.contact .input:focus {
+    border-color: var(--accent-color);
+    outline: none;
+}
+
+.contact .msg textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #bbd0e2;
+    border-radius: 8px; /* Rounded corners */
+    resize: vertical;
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    transition: border 0.3s ease, box-shadow 0.3s ease; /* Added transition for box-shadow */
+}
+
+.contact .msg textarea:focus {
+    border-color: var(--accent-color);
+    outline: none;
+    box-shadow: 0 0 5px var(--accent-color); /* Subtle glow effect on focus */
+}
+
+.contact .btn1 button {
+    background-color: var(--accent-color);
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px; /* Rounded corners for buttons */
+    cursor: pointer;
+    font-family: "Roboto", sans-serif;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Added transition for transform */
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.contact .btn1 button:hover {
+    background-color: var(--accent-color-dark);
+    transform: translateY(-2px); /* Subtle lift on hover */
+}
+
+.contact .btn1 button i {
+    margin-left: 8px;
+}
+
+/* Additional Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .footer .box {
+        flex-basis: calc(50% - 20px); /* Adjusts footer box size on smaller screens */
+    }
+
+    .footer .box-container {
+        flex-direction: column; /* Stacks footer boxes vertically on smaller screens */
+    }
+
+    .card {
+        width: 100%; /* Makes cards full width on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .search-input {
+        width: 100%; /* Search input full width on mobile */
+    }
+
+    .footer .box {
+        flex-basis: 100%; /* Full width for footer boxes on extra small screens */
+    }
+
+    .contact .wrapper1 {
+        padding: 20px; /* Less padding for smaller screens */
+    }
+}
+
+#preloader{
+   background-color: #000000 url('https://digitalsynopsis.com/wp-content/uploads/2016/06/loading-animations-preloader-gifs-ui-ux-effects-4.gif');
+   height: 100vh;
+   z-index: 100;
+   width: 100%;
+   position: fixed;
+}
